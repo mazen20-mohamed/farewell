@@ -2,505 +2,302 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Teams Group Chat Mockup</title>
 <style>
-
-  * {
-
-    box-sizing: border-box;
-
-    margin: 0;
-
-    padding: 0;
-
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
-  }
-
-  body {
-
-    background: #f5f5f5;
-
-    display: flex;
-
-    justify-content: center;
-
-    padding: 20px;
-
-  }
-
-  .teams-window {
-
-    width: 720px;
-
-    background: #ffffff;
-
-    border-radius: 8px;
-
-    overflow: hidden;
-
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-
-    border: 1px solid #e1e1e1;
-
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  body { background: #f5f5f5; display: flex; justify-content: center; padding: 20px; }
+  .teams-window { width: 720px; max-width: 100%; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border: 1px solid #e1e1e1; }
 
   /* Header */
-
-  .teams-header {
-
-    display: flex;
-
-    align-items: center;
-
-    padding: 14px 20px;
-
-    border-bottom: 1px solid #e1e1e1;
-
-    background: #ffffff;
-
-  }
-
-  .group-icon {
-
-    width: 36px;
-
-    height: 36px;
-
-    border-radius: 50%;
-
-    background: #6264a7;
-
-    color: #ffffff;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-weight: 600;
-
-    font-size: 14px;
-
-    margin-right: 12px;
-
-  }
-
-  .header-info h1 {
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    color: #1a1a1a;
-
-  }
-
-  .header-info p {
-
-    font-size: 12px;
-
-    color: #616161;
-
-    margin-top: 2px;
-
-  }
-
-  .header-tabs {
-
-    display: flex;
-
-    gap: 18px;
-
-    margin-left: 20px;
-
-  }
-
-  .header-tabs span {
-
-    font-size: 13px;
-
-    color: #616161;
-
-    padding-bottom: 14px;
-
-    cursor: default;
-
-  }
-
-  .header-tabs span.active {
-
-    color: #6264a7;
-
-    font-weight: 600;
-
-    border-bottom: 2px solid #6264a7;
-
-  }
+  .teams-header { display: flex; align-items: center; padding: 14px 20px; border-bottom: 1px solid #e1e1e1; background: #ffffff; }
+  .group-icon { width: 36px; height: 36px; border-radius: 50%; background: #6264a7; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; margin-right: 12px; }
+  .header-info h1 { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+  .header-info p { font-size: 12px; color: #616161; margin-top: 2px; }
+  .header-tabs { display: flex; gap: 18px; margin-left: 20px; }
+  .header-tabs span { font-size: 13px; color: #616161; padding-bottom: 14px; cursor: default; }
+  .header-tabs span.active { color: #6264a7; font-weight: 600; border-bottom: 2px solid #6264a7; }
 
   /* Chat body */
-
-  .chat-body {
-
-    padding: 20px;
-
-    background: #ffffff;
-
-  }
-
-  .date-divider {
-
-    text-align: center;
-
-    font-size: 12px;
-
-    color: #8a8a8a;
-
-    margin: 8px 0 20px;
-
-  }
-
-  /* Incoming message (Mohamed) */
-
-  .message-row {
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 10px;
-
-    margin-bottom: 18px;
-
-  }
-
-  .avatar-sm {
-
-    width: 32px;
-
-    height: 32px;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-weight: 600;
-
-    font-size: 12px;
-
-    color: #ffffff;
-
-    flex-shrink: 0;
-
-  }
-
-  .msg-content {
-
-    max-width: 75%;
-
-  }
-
-  .msg-name-row {
-
-    display: flex;
-
-    align-items: baseline;
-
-    gap: 8px;
-
-    margin-bottom: 4px;
-
-  }
-
-  .msg-name {
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    color: #1a1a1a;
-
-  }
-
-  .msg-time {
-
-    font-size: 11px;
-
-    color: #8a8a8a;
-
-  }
-
-  .msg-bubble {
-
-    border-radius: 4px 6px 6px 6px;
-
-    padding: 12px 14px;
-
-    font-size: 14px;
-
-    line-height: 1.6;
-
-    color: #1a1a1a;
-
-  }
-
-  .msg-bubble.incoming {
-
-    background: #f0f0f0;
-
-  }
-
-  .msg-bubble.leaving {
-
-    background: #fff4e5;
-
-    border-left: 3px solid #cc6b00;
-
-  }
-
-  /* Outgoing message (right aligned) */
-
-  .message-row.outgoing {
-
-    flex-direction: row-reverse;
-
-  }
-
-  .message-row.outgoing .msg-content {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-end;
-
-  }
-
-  .msg-bubble.outgoing {
-
-    background: #e8e8f9;
-
-    border-radius: 6px 4px 6px 6px;
-
-  }
-
-  /* Reaction */
-
-  .reactions {
-
-    display: flex;
-
-    gap: 4px;
-
-    margin-top: 6px;
-
-  }
-
-  .reaction-pill {
-
-    background: #ffffff;
-
-    border: 1px solid #e1e1e1;
-
-    border-radius: 12px;
-
-    padding: 2px 8px;
-
-    font-size: 12px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 4px;
-
-  }
+  .chat-body { padding: 20px; background: #ffffff; }
+  .date-divider { text-align: center; font-size: 12px; color: #8a8a8a; margin: 8px 0 20px; }
+  .message-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 18px; }
+  .avatar-sm { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px; color: #fff; flex-shrink: 0; }
+  .msg-content { max-width: 75%; }
+  .msg-name-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+  .msg-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+  .msg-time { font-size: 11px; color: #8a8a8a; }
+  .msg-bubble { border-radius: 4px 6px 6px 6px; padding: 12px 14px; font-size: 14px; line-height: 1.6; color: #1a1a1a; white-space: pre-wrap; word-wrap: break-word; }
+  .msg-bubble.incoming { background: #f0f0f0; }
+  .msg-bubble.leaving { background: #fff4e5; border-left: 3px solid #cc6b00; }
+  .message-row.outgoing { flex-direction: row-reverse; }
+  .message-row.outgoing .msg-content { display: flex; flex-direction: column; align-items: flex-end; }
+  .msg-bubble.outgoing { background: #e8e8f9; border-radius: 6px 4px 6px 6px; }
+
+  /* Reactions */
+  .reactions { display: flex; gap: 4px; margin-top: 6px; }
+  .reaction-pill { background: #fff; border: 1px solid #e1e1e1; border-radius: 12px; padding: 2px 8px; font-size: 12px; display: flex; align-items: center; gap: 4px; }
 
   /* Compose box */
-
-  .compose-area {
-
-    border-top: 1px solid #e1e1e1;
-
-    padding: 12px 16px;
-
-    background: #ffffff;
-
-  }
-
-  .compose-box {
-
-    border: 1px solid #c8c6c4;
-
-    border-radius: 4px;
-
-    padding: 10px 14px;
-
-    font-size: 14px;
-
-    color: #a19f9d;
-
-  }
-
-  .compose-icons {
-
-    display: flex;
-
-    gap: 14px;
-
-    padding: 10px 4px 0;
-
-    color: #616161;
-
-  }
-
-  .compose-icons svg {
-
-    width: 18px;
-
-    height: 18px;
-
-  }
-
-  .send-icon {
-
-    margin-left: auto;
-
-    color: #6264a7;
-
-  }
+  .compose-area { border-top: 1px solid #e1e1e1; padding: 12px 16px; background: #ffffff; }
+  .compose-name { width: 100%; border: 1px solid #c8c6c4; border-radius: 4px; padding: 8px 14px; font-size: 13px; margin-bottom: 8px; outline: none; }
+  .compose-box { width: 100%; border: 1px solid #c8c6c4; border-radius: 4px; padding: 10px 14px; font-size: 14px; color: #1a1a1a; resize: none; min-height: 42px; max-height: 160px; outline: none; }
+  .compose-name:focus, .compose-box:focus { border-bottom: 2px solid #6264a7; }
+  .compose-box::placeholder, .compose-name::placeholder { color: #a19f9d; }
+  .compose-icons { display: flex; align-items: center; gap: 14px; padding: 10px 4px 0; color: #616161; }
+  .compose-icons svg { width: 18px; height: 18px; }
+  .send-btn { margin-left: auto; background: none; border: none; cursor: pointer; color: #6264a7; display: flex; }
+  .send-btn:disabled { opacity: .4; cursor: default; }
+  .compose-status { font-size: 12px; color: #c4314b; margin-left: 8px; }
 </style>
 </head>
 <body>
 <div class="teams-window">
-<!-- Header -->
-<div class="teams-header">
-<div class="group-icon">EJ</div>
-<div class="header-info">
-<h1>Ejada Team</h1>
-<p>Mohamed, Mazen, Mostafa, Hadeer +25</p>
-</div>
-</div>
-<div class="teams-header" style="border-top: none; padding-top: 0;">
-<div class="header-tabs">
-<span class="active">Chat</span>
-<span>Files</span>
-<span>Notes</span>
-</div>
-</div>
-<!-- Chat body -->
-<div class="chat-body">
-<div class="date-divider">Today</div>
-<!-- Mohamed's leaving message -->
-<div class="message-row">
-<div class="avatar-sm" style="background:#c4314b;">MI</div>
-<div class="msg-content">
-<div class="msg-name-row">
-<span class="msg-name">Mohamed Elsayed Ibraheem</span>
-<span class="msg-time">3:10 PM</span>
-</div>
-<div class="msg-bubble incoming leaving">
 
-          Hi everyone, I wanted to let you know that this will be my last week with the team. It's been a real pleasure working with all of you and I'll miss this group a lot. Thank you for everything 🤍
-</div>
-<div class="reactions">
-<div class="reaction-pill">❤️ 2</div>
-<div class="reaction-pill">😭 10</div>
-</div>
-</div>
-</div>
-<!-- Mazen's reply -->
-<div class="message-row outgoing">
-<div class="avatar-sm" style="background:#6264a7;">ME</div>
-<div class="msg-content">
-<div class="msg-name-row">
-<span class="msg-time">3:12 PM</span>
-<span class="msg-name">Mazen Mohamed Eldessouky</span>
-</div>
-<div class="msg-bubble outgoing" style="direction: rtl;">
+  <!-- Header -->
+  <div class="teams-header">
+    <div class="group-icon">EJ</div>
+    <div class="header-info">
+      <h1>Ejada Team</h1>
+      <p>Mohamed, Mazen, Mostafa, Hadeer +25</p>
+    </div>
+  </div>
+  <div class="teams-header" style="border-top: none; padding-top: 0;">
+    <div class="header-tabs">
+      <span class="active">Chat</span>
+      <span>Files</span>
+      <span>Notes</span>
+    </div>
+  </div>
 
-        مبسوط يا ريس اني اشتغلت معاك و حمد لله كسبت اخ  و ربنا يوفقك في الي جاي ❤️
-</div>
-</div>
-</div>
-<!-- Colleague reply 1 -->
-<div class="message-row">
-<div class="avatar-sm" style="background:#00897b;">MA</div>
-<div class="msg-content">
-<div class="msg-name-row">
-<span class="msg-name">Mostafa Ahmed</span>
-<span class="msg-time">3:14 PM</span>
-</div>
-<div class="msg-bubble incoming">
+  <!-- Chat body -->
+  <div class="chat-body">
+    <div class="date-divider">Today</div>
 
-          The team won't be the same without you, More than a senior, you were a big brother to me. Thank you for everything you taught me, and I'll never forget how you always had my back. Bel tawfee2 ya wa7sh ❤️
- 
-</div>
-</div>
-</div>
-<!-- Colleague reply 2 -->
-<div class="message-row">
-<div class="avatar-sm" style="background:#8764b8;">HA</div>
-<div class="msg-content">
-<div class="msg-name-row">
-<span class="msg-name">Hadeer Hasaneen</span>
-<span class="msg-time">3:16 PM</span>
-</div>
-<div class="msg-bubble incoming">
+    <!-- Mohamed's leaving message -->
+    <div class="message-row">
+      <div class="avatar-sm" style="background:#c4314b;">MI</div>
+      <div class="msg-content">
+        <div class="msg-name-row">
+          <span class="msg-name">Mohamed Elsayed Ibraheem</span>
+          <span class="msg-time">3:10 PM</span>
+        </div>
+        <div class="msg-bubble incoming leaving">Hi everyone, I wanted to let you know that this will be my last week with the team. It's been a real pleasure working with all of you and I'll miss this group a lot. Thank you for everything 🤍</div>
+        <div class="reactions">
+          <div class="reaction-pill">❤️ 2</div>
+          <div class="reaction-pill">😭 10</div>
+        </div>
+      </div>
+    </div>
 
-         مع السلامة يا محمد ربنا يوفقك في شغلك الجديد ويكرمك فيه هنفتقدك جدا والله وشغلك واجتهادك معانا مش سهل نعوضه ورحك الحلوة مساعدتك لاصحابك و زمايلك ربنا يوفقك في كل خطوة 
-</div>
-<div class="reactions">
-<div class="reaction-pill">❤️ 2</div>
-</div>
-</div>
-</div>
-<!-- Colleague reply 3 -->
-<div class="message-row">
-<div class="avatar-sm" style="background:#e3008c;">GK</div>
-<div class="msg-content">
-<div class="msg-name-row">
-<span class="msg-name">George Kamal</span>
-<span class="msg-time">3:18 PM</span>
-</div>
-<div class="msg-bubble incoming">
+    <!-- Mazen's reply -->
+    <div class="message-row outgoing">
+      <div class="avatar-sm" style="background:#6264a7;">ME</div>
+      <div class="msg-content">
+        <div class="msg-name-row">
+          <span class="msg-time">3:12 PM</span>
+          <span class="msg-name">Mazen Mohamed Eldessouky</span>
+        </div>
+        <div class="msg-bubble outgoing" dir="rtl">مبسوط يا ريس اني اشتغلت معاك و حمد لله كسبت اخ  و ربنا يوفقك في الي جاي ❤️</div>
+      </div>
+    </div>
 
-          Working with you has been a real privilege. Wishing you every success and the best of luck in your future. I really hope we get to work together again!
-</div>
-</div>
-</div>
-<!-- Colleague reply 4 -->
-<div class="message-row">
-<div class="avatar-sm" style="background:#038387;">AE</div>
-<div class="msg-content">
-<div class="msg-name-row">
-<span class="msg-name">Ahmed Essam</span>
-<span class="msg-time">3:20 PM</span>
-</div>
-<div class="msg-bubble incoming" style="direction: rtl;">
+    <!-- Colleague reply 1 -->
+    <div class="message-row">
+      <div class="avatar-sm" style="background:#00897b;">MA</div>
+      <div class="msg-content">
+        <div class="msg-name-row">
+          <span class="msg-name">Mostafa Ahmed</span>
+          <span class="msg-time">3:14 PM</span>
+        </div>
+        <div class="msg-bubble incoming">The team won't be the same without you, More than a senior, you were a big brother to me. Thank you for everything you taught me, and I'll never forget how you always had my back. Bel tawfee2 ya wa7sh ❤️</div>
+      </div>
+    </div>
 
-          انبسطت جدا بالشغل معاك, اتمنالك التوفيق فى اللى جاى وان شاء الله نشتغل سوا يوما ما, انا وبيت الشاورما هنفتقدك😍😂
-</div>
-</div>
+    <!-- Colleague reply 2 -->
+    <div class="message-row">
+      <div class="avatar-sm" style="background:#8764b8;">HA</div>
+      <div class="msg-content">
+        <div class="msg-name-row">
+          <span class="msg-name">Hadeer Hasaneen</span>
+          <span class="msg-time">3:16 PM</span>
+        </div>
+        <div class="msg-bubble incoming" dir="rtl">مع السلامة يا محمد ربنا يوفقك في شغلك الجديد ويكرمك فيه هنفتقدك جدا والله وشغلك واجتهادك معانا مش سهل نعوضه ورحك الحلوة مساعدتك لاصحابك و زمايلك ربنا يوفقك في كل خطوة</div>
+        <div class="reactions">
+          <div class="reaction-pill">❤️ 2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colleague reply 3 -->
+    <div class="message-row">
+      <div class="avatar-sm" style="background:#e3008c;">GK</div>
+      <div class="msg-content">
+        <div class="msg-name-row">
+          <span class="msg-name">George Kamal</span>
+          <span class="msg-time">3:18 PM</span>
+        </div>
+        <div class="msg-bubble incoming">Working with you has been a real privilege. Wishing you every success and the best of luck in your future. I really hope we get to work together again!</div>
+      </div>
+    </div>
+
+    <!-- Colleague reply 4 -->
+    <div class="message-row">
+      <div class="avatar-sm" style="background:#038387;">AE</div>
+      <div class="msg-content">
+        <div class="msg-name-row">
+          <span class="msg-name">Ahmed Essam</span>
+          <span class="msg-time">3:20 PM</span>
+        </div>
+        <div class="msg-bubble incoming" dir="rtl">انبسطت جدا بالشغل معاك, اتمنالك التوفيق فى اللى جاى وان شاء الله نشتغل سوا يوما ما, انا وبيت الشاورما هنفتقدك😍😂</div>
+      </div>
+    </div>
+
+    <!-- Messages saved in Firestore appear here -->
+    <div id="live-messages"></div>
+  </div>
+
+  <!-- Compose box -->
+  <form class="compose-area" id="compose-form">
+    <input id="compose-name" class="compose-name" type="text" placeholder="Your name" maxlength="50" dir="auto" required>
+    <textarea id="compose-text" class="compose-box" placeholder="Type a new message" maxlength="499" rows="1" dir="auto" required></textarea>
+    <div class="compose-icons">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h.01M15 9h.01M8 13s1.5 2 4 2 4-2 4-2"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+      <span id="compose-status" class="compose-status"></span>
+      <button type="submit" class="send-btn" id="send-btn" title="Send">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </form>
 </div>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-</div>
-<!-- Compose box -->
-<div class="compose-area">
-<div class="compose-box">Type a new message</div>
-<div class="compose-icons">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h.01M15 9h.01M8 13s1.5 2 4 2 4-2 4-2"/></svg>
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
-<svg class="send-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
-</div>
-</div>
-</div>
+  // 🔻 Replace with YOUR config: Firebase console → Project settings → Your apps → Web app
+  const firebaseConfig = {
+    apiKey: "XXXX",
+    authDomain: "farewell-56bbe.firebaseapp.com",
+    projectId: "farewell-56bbe",
+    storageBucket: "farewell-56bbe.appspot.com",
+    messagingSenderId: "XXXX",
+    appId: "XXXX"
+  };
+
+  const db = getFirestore(initializeApp(firebaseConfig));
+  const messagesRef = collection(db, "messages");
+
+  const form = document.getElementById("compose-form");
+  const nameInput = document.getElementById("compose-name");
+  const textInput = document.getElementById("compose-text");
+  const sendBtn = document.getElementById("send-btn");
+  const statusEl = document.getElementById("compose-status");
+  const liveList = document.getElementById("live-messages");
+
+  const COLORS = ["#c4314b", "#6264a7", "#00897b", "#8764b8", "#e3008c", "#038387", "#ca5010", "#498205", "#0078d4", "#986f0b"];
+
+  // Remember the visitor's name so their messages show on the right side
+  nameInput.value = localStorage.getItem("farewell-name") || "";
+
+  function colorFor(name) {
+    let h = 0;
+    for (const ch of name) h = (h * 31 + ch.codePointAt(0)) >>> 0;
+    return COLORS[h % COLORS.length];
+  }
+
+  function initials(name) {
+    const parts = name.trim().split(/\s+/);
+    return ((parts[0]?.[0] || "?") + (parts[1]?.[0] || "")).toUpperCase();
+  }
+
+  function formatTime(date) {
+    return date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  }
+
+  function renderMessage({ name, text, date }) {
+    const isMine = name === localStorage.getItem("farewell-name");
+
+    const row = document.createElement("div");
+    row.className = "message-row" + (isMine ? " outgoing" : "");
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar-sm";
+    avatar.style.background = colorFor(name);
+    avatar.textContent = initials(name);
+
+    const content = document.createElement("div");
+    content.className = "msg-content";
+
+    const nameRow = document.createElement("div");
+    nameRow.className = "msg-name-row";
+    const nameEl = document.createElement("span");
+    nameEl.className = "msg-name";
+    nameEl.textContent = name;
+    const timeEl = document.createElement("span");
+    timeEl.className = "msg-time";
+    timeEl.textContent = formatTime(date);
+    if (isMine) nameRow.append(timeEl, nameEl);
+    else nameRow.append(nameEl, timeEl);
+
+    const bubble = document.createElement("div");
+    bubble.className = "msg-bubble " + (isMine ? "outgoing" : "incoming");
+    bubble.dir = "auto"; // Arabic → right-to-left, English → left-to-right
+    bubble.textContent = text; // textContent prevents HTML injection
+
+    content.append(nameRow, bubble);
+    row.append(avatar, content);
+    return row;
+  }
+
+  // Live updates: new messages appear for everyone without a page reload
+  onSnapshot(query(messagesRef, orderBy("createdAt", "asc")), (snapshot) => {
+    liveList.innerHTML = "";
+    snapshot.forEach((doc) => {
+      const data = doc.data({ serverTimestamps: "estimate" });
+      const date = data.createdAt ? data.createdAt.toDate() : new Date();
+      liveList.appendChild(renderMessage({ name: data.name, text: data.text, date }));
+    });
+  }, (err) => {
+    statusEl.textContent = "Could not load messages: " + err.message;
+  });
+
+  async function send() {
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
+    if (!name) { nameInput.focus(); return; }
+    if (!text) { textInput.focus(); return; }
+
+    localStorage.setItem("farewell-name", name);
+    sendBtn.disabled = true;
+    statusEl.textContent = "";
+    try {
+      await addDoc(messagesRef, { name, text, createdAt: serverTimestamp() });
+      textInput.value = "";
+      textInput.style.height = "";
+      liveList.lastElementChild?.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (err) {
+      statusEl.textContent = "Could not send: " + err.message;
+    } finally {
+      sendBtn.disabled = false;
+    }
+  }
+
+  form.addEventListener("submit", (e) => { e.preventDefault(); send(); });
+
+  // Enter sends, Shift+Enter adds a new line (same as Teams)
+  textInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); }
+  });
+
+  // Make the text box grow as the message gets longer
+  textInput.addEventListener("input", () => {
+    textInput.style.height = "auto";
+    textInput.style.height = textInput.scrollHeight + "px";
+  });
+</script>
 </body>
 </html>
- 
